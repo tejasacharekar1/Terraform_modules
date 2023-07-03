@@ -6,7 +6,7 @@ resource "aws_security_group" "EKS-SG" {
     Name = "${var.project}-SG"
   }
   dynamic "ingress" {
-    for_each = [80, 443, 22]
+    for_each = [80, 443, 22, 3306]
     iterator = port
     content {
       description = "TLS for VPC"

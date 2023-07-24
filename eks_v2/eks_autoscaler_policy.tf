@@ -1,7 +1,7 @@
-resource "aws_iam_policy" "Autoscaller_worker_node" {
+resource "aws_iam_role_policy" "Autoscaller_worker_node" {
   name        = "eks_autoscaller"
   description = "Policy for EKS Autoscaller"
-  path = aws_iam_role.node
+  role        = aws_iam_role.worker_node
   policy = jsonencode(
     {
       "Version" : "2012-10-17",
@@ -22,9 +22,4 @@ resource "aws_iam_policy" "Autoscaller_worker_node" {
       ]
     }
   )
-}
-
-resource "aws_iam_policy_attachment" "worker_node_autoscaller" {
-  policy_arn = aws_iam_policy.Autoscaller_worker_node.arn
-  roles      = aws_iam_role.node
 }

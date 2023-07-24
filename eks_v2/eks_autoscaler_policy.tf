@@ -1,6 +1,7 @@
 resource "aws_iam_policy" "Autoscaller_worker_node" {
   name        = "eks_autoscaller"
   description = "Policy for EKS Autoscaller"
+  path = aws_iam_role.node
   policy = jsonencode(
     {
       "Version" : "2012-10-17",

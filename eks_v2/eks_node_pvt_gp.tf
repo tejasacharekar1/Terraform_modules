@@ -1,7 +1,7 @@
 resource "aws_eks_node_group" "tj_eks_node_pvt_group" {
   cluster_name    = aws_eks_cluster.tj-eks-cluster.name
   node_group_name = "${var.project}-pvt-ng"
-  node_role_arn   = aws_iam_role.node.arn
+  node_role_arn   = aws_iam_role.worker_node.arn
   subnet_ids      = var.private_subnet_ids
 
   scaling_config {
